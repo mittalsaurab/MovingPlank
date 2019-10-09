@@ -5,7 +5,7 @@
 #include<thread>
 using namespace std;
 
-int xin=300,yin=400,xcen=100,ycen=100,r=25,area1,area2;
+int xin=300,yin=400,xcen=100,ycen=100,r=25,area1,area2; // set corner co-ordinates of plank and center co-ordinates of circle
 int step=5,step2=2;
 void *p1,*p2;
 
@@ -24,6 +24,9 @@ void drawBall(){
 }
 
 void showBall(){
+  
+   // This function controls the motion of ball 
+       
     int t1=1,t2=-1;
     bool f=1;
     int temp1=xcen,temp2=ycen;
@@ -52,6 +55,9 @@ void showBall(){
 }
 
 void showPlank(){
+       
+   // This is to move plank with left, down, top and right arrow keys    
+       
     drawPlank();
     int temp1=xin,temp2=yin;
     while(true){
@@ -123,6 +129,8 @@ int main(){
    p2=malloc(area2);
    getimage(xcen-r,ycen-r,xcen+r,ycen+r, p2);
 
+   // Created two threads to execute the both plank and circle motion simultaneously     
+       
    thread T1(showBall);
    thread T2(showPlank);
 
